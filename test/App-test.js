@@ -12,4 +12,9 @@ describe('App', () => {
     assert.equal(wrapper.type(), 'div')
   })
 
+  it('should have a prop of title', () => {
+    const title = 'test'
+    const wrapper = shallow(<App title={title}/>)
+    expect(wrapper.contains(title)).to.equal(true)
+  })
 })
