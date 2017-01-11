@@ -37,7 +37,7 @@ export default class App extends Component {
   }
 
   handleClear() {
-    this.setState({score: null})
+    this.setState({score: null, highScoreMsg: ''})
   }
 
   render() {
