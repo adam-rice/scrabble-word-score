@@ -12,6 +12,10 @@ export default class App extends Component {
     }
   }
 
+  componentDidMount() {
+    console.log('I love React!');
+  }
+
   handleSubmit(string, number) {
     const score = scoreWord(string, number)
     this.setState({
