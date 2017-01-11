@@ -2,10 +2,10 @@
 
 import React from 'react'
 
-export const Score = ({ score }) => {
+export const Score = ({ score, message }) => {
   return (
     <div id="score-component">
-      <h2>{score}</h2>
+      <h2>{score} {message}</h2>
     </div>
   )
 }

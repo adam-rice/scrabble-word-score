@@ -1,6 +1,7 @@
 /*jshint esversion: 6 */
 import React, { Component } from 'react'
 import { scoreWord } from '../helpers/scoreWord'
+import { highScore } from '../helpers/highScore'
 import Controls from './Controls'
 import { Score } from './Score'
 
@@ -8,7 +9,9 @@ export default class App extends Component {
   constructor() {
     super()
     this.state = {
-      score: null
+      score: null,
+      highScore: 0,
+      highScoreMsg: ''
     }
   }
 
@@ -17,10 +20,20 @@ export default class App extends Component {
   }
 
   handleSubmit(string, number) {
-    const score = scoreWord(string, number)
-    this.setState({
-      score: score
-    })
+    let currentScore = scoreWord(string, number)
+    let highScoreCheck = highScore(currentScore, this.state.highScore)
+    if(highScoreCheck === 'New High Score!') {
+      return this.setState({
+        score: currentScore,
+        highScore: currentScore,
+        highScoreMsg: highScoreCheck
+      })
+    } else {
+      this.setState({
+        score: currentScore,
+        highScoreMsg: ''
+      })
+    }
   }
 
   handleClear() {
@@ -35,7 +48,7 @@ export default class App extends Component {
           onSubmit={this.handleSubmit.bind(this)}
           onClear={this.handleClear.bind(this)}
         />
-        <Score score={this.state.score}/>
+        <Score score={this.state.score} message={this.state.highScoreMsg}/>
       </div>
     )
   }
