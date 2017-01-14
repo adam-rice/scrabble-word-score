@@ -33,6 +33,9 @@ export default class Controls extends Component {
         <input
           placeholder="enter a multiplier"
           ref="multiplier"
+          type="number"
+          min="1"
+          max="100"
         />
         <button>Submit</button>
         <button onClick={this.handleClick.bind(this)} id="clear-btn">Clear Fields</button>
